@@ -4,6 +4,7 @@ import com.example.sampleapp.domain.consts.AgeCertification;
 import com.example.sampleapp.domain.consts.Billing;
 import com.example.sampleapp.domain.consts.Gender;
 import com.example.sampleapp.domain.value.*;
+import com.example.sampleapp.infrastructure.database.entity.UserEntity;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;
@@ -40,7 +41,7 @@ public class User {
    *
    * @return 判定結果
    */
-  public boolean isAgeCertificationUser(){
+  public boolean isAgeCertificationUser() {
     return this.ageCertification.isAgeCertification();
   }
 
@@ -56,4 +57,7 @@ public class User {
     return gender.isWomen() || gender.isMen() && billing.isBilling();
   }
 
+  public UserEntity generateUserEntity() {
+    return new UserEntity(userId.getValue(), userName.getValue(), age.getValue());
+  }
 }

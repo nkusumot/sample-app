@@ -9,11 +9,13 @@ import java.util.List;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class UserGroup {
 
+  private final String groupId;
+
   private final List<User> userList;
 
   @NonNull
-  public static UserGroup from(List<User> userList) {
-    return new UserGroup(userList);
+  public static UserGroup from(@NonNull final String groupId, @NonNull final List<User> userList) {
+    return new UserGroup(groupId, userList);
   }
 
   /**

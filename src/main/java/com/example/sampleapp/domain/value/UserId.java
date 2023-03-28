@@ -10,7 +10,7 @@ import java.io.Serializable;
 public class UserId extends AbstractValueObject<UserId> implements Serializable {
 
   @Serial private static final long serialVersionUID = 1L;
-  @Getter private Long value;
+  @Getter private final Long value;
 
   public UserId() {
     this.value = null;
