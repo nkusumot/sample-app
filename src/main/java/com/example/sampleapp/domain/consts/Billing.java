@@ -1,10 +1,6 @@
 package com.example.sampleapp.domain.consts;
 
-import java.io.Serial;
-import java.io.Serializable;
-import java.util.Objects;
-import com.example.sampleapp.domain.value.AbstractValueObject;
-import lombok.Getter;
+import java.util.HashMap;import java.util.Map;import java.util.Objects;
 import lombok.NonNull;
 import org.springframework.lang.Nullable;
 
@@ -16,6 +12,8 @@ public enum Billing implements EnumInterface {
   private final String name;
 
   private final Integer code;
+
+  private static final Map<Integer, Billing> GENDER_BY_CODE = new HashMap<>();
 
   Billing(@NonNull final String name, @Nullable Integer code) {
     this.name = name;
@@ -38,7 +36,11 @@ public enum Billing implements EnumInterface {
     return this.code.toString();
   }
 
-  public boolean isBilling(){
+  public static Billing getByCode(final int code) {
+    return GENDER_BY_CODE.get(code);
+  }
+
+  public boolean isBilling() {
     return Objects.equals(this, Billing.BILLING);
   }
 }

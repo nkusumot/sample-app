@@ -20,9 +20,9 @@ public final class UserGroupControllerHelper {
     final UserName userName = UserName.from(request.getUserName());
     final Age age = Age.from(request.getAge());
     final AgeCertification ageCertification =
-        AgeCertification.valueOf(request.getAgeCertification().getName());
-    final Gender gender = Gender.valueOf(request.getGender().getName());
-    final Billing billing = Billing.valueOf(request.getBilling().getName());
+        AgeCertification.getByCode(request.getAgeCertification().getCode());
+    final Gender gender = Gender.getByCode(request.getGender().getCode());
+    final Billing billing = Billing.getByCode(request.getBilling().getCode());
 
     return User.of(userId, userName, age, ageCertification, gender, billing);
   }

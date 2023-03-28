@@ -2,6 +2,8 @@ package com.example.sampleapp.domain.consts;
 
 import lombok.NonNull;
 import org.springframework.lang.Nullable;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public enum Gender implements EnumInterface {
@@ -12,6 +14,8 @@ public enum Gender implements EnumInterface {
   private final String name;
 
   private final Integer code;
+
+  private static final Map<Integer, Gender> GENDER_BY_CODE = new HashMap<>();
 
   Gender(@NonNull final String name, @Nullable Integer code) {
     this.name = name;
@@ -32,6 +36,10 @@ public enum Gender implements EnumInterface {
   public String toString() {
     assert this.code != null;
     return this.code.toString();
+  }
+
+  public static Gender getByCode(final int code) {
+    return GENDER_BY_CODE.get(code);
   }
 
   public boolean isMen() {
