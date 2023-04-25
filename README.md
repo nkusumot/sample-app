@@ -10,6 +10,43 @@ https://github.com/google/google-java-format/blob/master/README.md#intellij-jre-
 http://localhost:8080/swagger-ui/index.html
 
 # コーディング規約
+## ディレクトリ構成
+```
+- presentation/
+  - controller/
+  - dto/
+    - request/
+    - response/
+  - helper/
+  - exception/
+- application/
+  - service/
+  - exception/
+- domain/
+  - model/
+  - exception/
+  - service/
+  - repository/
+  - validate/
+  - value/
+  - const/
+- repository
+  - api
+    - config
+    - dto
+      - request
+      - response
+    - impl
+    - exception
+  - database
+    - mapper
+      - dto
+        - request
+        - response
+      - exception
+      - impl
+```
+## 各説明
 - <span>presentation<span> <br>ユーザーインターフェースとの接触面を実装するためのパッケージです。この層では、ユーザーが直接触れる部分を担当しており、UIや入力値のバリデーションなどの責任を持ちます。これらはドメインロジックから独立して実装され、ビジネスルールを保持するためのDTOを介して、ドメイン層とやり取りを行います。
   - <span>controller<span> <br>リクエストを受け取り、ビジネスロジックを実行し、レスポンスを返すためのパッケージです。コントローラーは、presentation層とbusiness層の間の架け橋の役割を担い、ドメイン層から受け取ったDTOをもとにビジネスロジックを呼び出します。また、DTOに応じたレスポンスを生成し、クライアントに返します。
   - <span>dto<span> <br>外部とのやり取りのためのDTOを実装するパッケージです。DTOはData Transfer Objectの略であり、外部との通信に必要なデータを表現します。ビジネスロジックからはDTOを介してデータを受け渡します。この層では、入力DTOと出力DTOを用意して、それぞれのDTOに必要なフィールドやバリデーションルールを定義します。
